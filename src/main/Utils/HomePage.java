@@ -13,32 +13,58 @@ public class HomePage {
 
     WebDriver driver;
 
-    @FindBy(how = How.LINK_TEXT, using = "Get started free")
-    private WebElement Link;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"user_full_name\"]")
+    private WebElement Fullname;
+
+    @FindBy(how = How.ID, using = "user_email_login")
+    private WebElement Email;
+
+    @FindBy(how = How.ID, using = "user_password")
+    private WebElement Pass;
+
+    @FindBy(how = How.ID, using = "tnc_checkbox")
+    private WebElement check;
+
+    @FindBy(how = How.ID, using = "user_submit")
+    private WebElement Signme;
 
 
-    public void launchpage() throws Throwable {
-        if (BaseSelenium.driver != null) {
+    Actions actions = new Actions(BaseSelenium.driver);
+    By xpath = By.xpath("//*[@id=\"signupModalButton\"]");
 
-            String path1 = "/html/body/div[1]/header/div/div/div/a[1]/svg";
-            if (BaseSelenium.driver.findElement(By.xpath(path1)).isDisplayed()) {
-                throw new IllegalStateException("Home page loaded properly");
-            }
-        }}
+    // By id = By.id("tnc_checkbox");
 
-
-    public HomePage get_free(WebElement element, String Link) {
-        element.click();
-        Actions action = new Actions(driver);
-        action.moveToElement(element).click().perform();
-        return this;
-    }
 
     public void get_free1() throws Throwable
     {
         PageFactory.initElements(BaseSelenium.driver, this);
-        Link.click();
+        actions.moveToElement(BaseSelenium.driver.findElement(xpath)).click().build().perform();
+        actions.click();
+
     }
 
+
+    public void launchpage() throws Throwable {
+        if (BaseSelenium.driver != null) {
+            Thread.sleep(2000);
+
+            //String path1 = "/html/body/div[1]/header/div/div/div/a[1]/svg";
+            String path1 = "//*[@id=\"signupModalButton\"]";
+            if (!BaseSelenium.driver.findElement(By.xpath(path1)).isDisplayed()) {
+                throw new IllegalStateException("Home page not loaded properly");
+            }
+        }}
+
+        public void signup(String name, String pass, String email)throws Throwable
+        {
+            PageFactory.initElements(BaseSelenium.driver, this);
+
+            Fullname.sendKeys(name);
+            Pass.sendKeys(pass);
+            Email.sendKeys(email);
+            check.click();
+            Signme.submit();
+
+        }
 }
 

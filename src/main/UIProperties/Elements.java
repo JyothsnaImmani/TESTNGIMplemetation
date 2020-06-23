@@ -1,6 +1,7 @@
 package main.UIProperties;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class Elements {
 
@@ -8,7 +9,7 @@ public class Elements {
         static{
 
             try {
-                bundle = java.util.ResourceBundle.getBundle("Resources/URL");
+                bundle = java.util.ResourceBundle.getBundle("main/resources/UI");
                 if (bundle == null) {
                     throw new IOException("Resource bundle cannot be loaded");
 

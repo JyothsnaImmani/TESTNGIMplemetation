@@ -3,8 +3,8 @@ package main.Utils;
 import main.UIProperties.Elements;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.core.internal.gherkin.ast.Scenario;
 import main.Utils.BaseSelenium;
+import io.cucumber.java.Scenario;
 import main.Utils.Drivers;
 
 
