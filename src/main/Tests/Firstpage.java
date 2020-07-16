@@ -1,11 +1,10 @@
 package main.Tests;
 
-import io.cucumber.java8.Th;
+import io.cucumber.java.en.When;
 import main.Utils.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Test;
 
 public class Firstpage {
 
